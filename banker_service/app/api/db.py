@@ -1,8 +1,7 @@
 import os
 
 from databases import Database
-from sqlalchemy import (FLOAT, Column, Integer, MetaData, String, Table,
-                        create_engine)
+from sqlalchemy import FLOAT, Column, Integer, MetaData, String, Table, create_engine
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 

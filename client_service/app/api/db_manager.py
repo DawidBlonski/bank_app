@@ -10,6 +10,7 @@ async def get_all_client() -> typing.List[typing.Mapping]:
     return await database.fetch_all(query=query)
 
 
+
 async def client_exist(iban: str) -> bool:
     reciver_exist_query = select([client.c.iban]).where(client.c.iban == iban)
     if await database.fetch_val(query=reciver_exist_query):

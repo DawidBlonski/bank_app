@@ -20,6 +20,11 @@ async def create_client(params: dict = Depends(CreateClient)):
     return await db_manager.create_client(params)
 
 
+@banker.get("/client/{iban}", status_code=status.HTTP_200_OK)
+async def client(iban: str):
+    return await db_manager.get_client(iban)
+
+
 @banker.patch("/client/{iban}", status_code=status.HTTP_200_OK)
 async def update_client(iban: str, params: dict = Depends(UpdateClient)):
     if not params.dict(exclude_none=True):

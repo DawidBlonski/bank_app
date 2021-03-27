@@ -1,6 +1,6 @@
 from typing import Optional
 from fastapi import HTTPException
-from pydantic import BaseModel,validator
+from pydantic import BaseModel, validator
 
 
 class Client(BaseModel):
@@ -17,12 +17,11 @@ class CreateClient(BaseModel):
     pesel: str
     saldo: float
 
-    @validator('pesel')
-    def pesel_length(cls,v):
+    @validator("pesel")
+    def pesel_length(cls, v):
         if len(v) != 11:
-            raise HTTPException(status_code=404,detail="Wrong PESEL")
+            raise HTTPException(status_code=404, detail="Wrong PESEL")
         return v
-
 
 
 class UpdateClient(BaseModel):

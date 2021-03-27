@@ -1,6 +1,6 @@
 import typing
 from uuid import uuid4
-
+from sqlalchemy import select
 from app.api.db import client, database
 
 from .models import CreateClient, UpdateClient
@@ -9,6 +9,11 @@ from .models import CreateClient, UpdateClient
 async def get_all_client() -> typing.List[typing.Mapping]:
     query = client.select()
     return await database.fetch_all(query=query)
+
+
+async def get_client(iban: str):
+    query = client.select().where(client.c.iban==iban)
+    return await database.fetch_all(query)
 
 
 async def create_client(params: CreateClient) -> None:
