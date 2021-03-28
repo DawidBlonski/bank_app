@@ -25,7 +25,6 @@ async def tranfser(shipper_iban: str, reciver_iban: str, transaction: float):
     await client_exist(shipper_iban, "Shipper")
     await client_exist(reciver_iban, "Reciver")
     await check_bill(shipper_iban,transaction)
-    await check_bill(reciver_iban,transaction)
     await db_manager.sent_tranfser(
         shipper_iban, reciver_iban, shiper_saldo, reciver_saldo, transaction
     )
